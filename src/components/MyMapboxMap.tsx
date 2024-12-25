@@ -57,7 +57,7 @@ const Map = ({locationData}: MapProps) => {
           .setLngLat([locationData.latitude, locationData.longitude])
           .addTo(map.current);
 
-        map.current.setCenter([locationData.latitude, locationData.longitude]);
+        map.current.setCenter([locationData.latitude, locationData.longitude]).setZoom(19);
       }
     }
   }, [locationData]);
