@@ -73,11 +73,6 @@ export default function MyLocation({ onLocationUpdate }: MyLocationProps) {
     );
   };
 
-  useEffect(() => {
-    console.log("Location data updated:", locationData);
-    if (locationData)
-      onLocationUpdate(locationData.longitude, locationData.latitude);
-  }, [locationData]);
 
   const stopTracking = () => {
     if (watchId.current !== null) {
@@ -97,6 +92,8 @@ export default function MyLocation({ onLocationUpdate }: MyLocationProps) {
   const handleToggle = () => {
     if (!isTracking) {
       startTracking();
+      if (locationData)
+        onLocationUpdate(locationData.longitude, locationData.latitude);
     } else {
       stopTracking();
     }
